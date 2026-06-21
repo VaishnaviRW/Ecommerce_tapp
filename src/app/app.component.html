@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary">
+          <h3 class="text-center p-3">E-Commerce Product Review</h3>
+        </div>
+        <div class="card-body">
+          <form #Ecomform="ngForm" (ngSubmit)="onproductsubmit()">
+            <div class="form-group">
+              <label for="customname">Customer Name*</label>
+              <input type="text" ngModel #customname="ngModel" name="customname" required class="form-control"
+                pattern="[A-Za-z ]+$" minlength="3" maxlength="40">
+              <strong class="text-danger" *ngIf="customname.touched && customname.hasError('required')">
+                Customer Name Is Required Field.
+              </strong>
+              <strong class="text-danger" *ngIf="customname.dirty && customname.hasError('pattern')">
+                Enter Valid Customer Name
+              </strong>
+              <strong class="text-danger" *ngIf="customname.dirty && customname.hasError('minlength')">
+                MinLength Of Customer Name Is
+                {{customname.errors?.['minlength'].requiredLength}} Actual Length Is
+                {{customname.errors?.['minlength'].actualLenth}}
+              </strong>
+            </div>
+
+            <div class="form-group">
+              <label for="productname">Product Name*</label>
+              <input type="text" ngModel #productname="ngModel" name="productname" required class="form-control"
+                pattern="[A-Za-z ]+$" minlength="3" maxlength="40">
+              <strong class="text-danger" *ngIf="productname.touched && productname.hasError('required')">
+                Product Name Is Required Field.
+              </strong>
+              <strong class="text-danger" *ngIf="productname.dirty && productname.hasError('pattern')">
+                Enter A valid Product Name
+              </strong>
+              <strong class="text-danger" *ngIf="productname.dirty && productname.hasError('minlength')">
+                MinLength Od Product Name Is
+                {{productname.errors?.['minlength'].requiredLength}} Actual Length Is
+                {{productname.errors?.['minlength'].actualLength}}
+              </strong>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label d-block">Rating*</label>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" value="1" #rating="ngModel" ngModel required>
+                <label class="form-check-label">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" value="2" #rating="ngModel" ngModel>
+                <label class="form-check-label">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" value="3" #rating="ngModel" ngModel>
+                <label class="form-check-label">3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" value="4" #rating="ngModel" ngModel>
+                <label class="form-check-label">4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" value="5" #rating="ngModel" ngModel>
+                <label class="form-check-label">5</label>
+              </div>
+
+              <strong class="text-danger" *ngIf="rating.touched && rating.hasError('required')">
+                Rating Is Required Field.
+              </strong>
+            </div>
+
+            <div class="form-group">
+              <label for="reviewtitle">Review Title*</label>
+              <input type="text" ngModel #reviewtitle="ngModel" name="reviewtitle" class="form-control" required
+                minlength="5">
+              <strong class="text-danger" *ngIf="reviewtitle.touched && reviewtitle.hasError('required')">
+                Review Title Is Required Field.
+              </strong>
+              <strong class="text-danger" *ngIf="reviewtitle.dirty && reviewtitle.hasError('minlength')">
+                Review Title Minimum Length Is 5
+              </strong>
+
+            </div>
+
+            <div class="form-group">
+              <label for="reviewdescription">Review Description*</label>
+              <textarea rows="4" type="text" ngModel #reviewdescription="ngModel" name="reviewdescription" required
+                class="form-control" minlength="30"></textarea>
+              <strong class="text-danger" *ngIf="reviewdescription.touched && reviewdescription.hasError('required')">
+                Review Description Is Required Field
+              </strong>
+              <strong class="text-danger" *ngIf="reviewdescription.dirty && reviewdescription.hasError('minlength')">
+                Description minimum 30 characters required.
+              </strong>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">Submit Your  Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
